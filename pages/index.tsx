@@ -7,10 +7,10 @@ export default function Home() {
   return (
     <main className="relative mx-auto max-w-7xl px-6 pt-24 pb-20 sm:px-8 lg:px-10">
       <Head>
-        <title>Md Raffiul Islam — Full-Stack Developer</title>
+        <title>Md Raffiul Islam — Software Engineer</title>
         <meta
           name="description"
-          content="Portfolio of Md Raffiul Islam, a Jr. Software Engineer at Karooth IT BD building full-stack web applications with React, Angular, Node.js, Java Spring Boot, and ASP.NET."
+          content="Portfolio of Md Raffiul Islam, a Software Engineer combining Angular, Spring Boot, and AI-assisted development workflows to build enterprise applications."
         />
       </Head>
       {/* Decorative glow blobs */}
@@ -42,7 +42,7 @@ export default function Home() {
                   Md Raffiul <span className="gradient-text">Islam</span>
                 </h2>
                 <p className="text-base font-bold uppercase tracking-[0.3em] text-cyan-600 dark:text-cyan-300 mt-2">
-                  Jr. Software Engineer · Full-Stack Developer
+                  Software Engineer · Angular &amp; Spring Boot
                 </p>
               </div>
             </div>
@@ -54,17 +54,17 @@ export default function Home() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"></span>
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500 dark:bg-cyan-400"></span>
               </span>
-              Available for New Projects
+              Enterprise Application Development
             </div>
 
             <h1 className="text-5xl font-black tracking-tight text-slate-900 dark:text-white sm:text-7xl lg:text-7xl leading-[1.05]">
               I build{" "}
-              <span className="gradient-text">modern web experiences</span>
+              <span className="gradient-text">secure enterprise applications</span>
             </h1>
 
             <p className="max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-400 sm:text-xl mx-auto text-center">
-              I design and develop interactive sites, dashboards, and enterprise
-              business systems that feel refined, fast, and easy to use on every screen.
+              I develop scalable Angular interfaces and Spring Boot APIs for complex
+              business workflows, with a focus on security, performance, and maintainability.
             </p>
           </div>
 
@@ -83,11 +83,12 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              "Responsive UI",
-              "Fast performance",
-              "Clean component design",
+              "Angular frontends",
+              "Spring Boot APIs",
+              "Scalable enterprise systems",
+              "AI-assisted workflows",
             ].map((item) => (
               <div key={item} className="highlight-chip justify-center">
                 {item}
@@ -104,55 +105,69 @@ export default function Home() {
               About me
             </p>
             <h2 className="mt-4 text-4xl font-extrabold text-slate-900 dark:text-white sm:text-5xl lg:max-w-4xl leading-tight">
-              Crafting digital experiences with{" "}
-              <span className="gradient-text">precision and passion</span>.
+              Building full-stack systems with{" "}
+              <span className="gradient-text">security and scale</span>.
             </h2>
 
             <div className="mt-10 grid gap-6 text-slate-600 dark:text-slate-400 leading-relaxed text-lg">
               <p className="text-center lg:text-left">
                 I&apos;m a Computer Science &amp; Engineering graduate from the
-                University of Dhaka (2024), currently working as a Jr. Software
-                Engineer at Karooth IT BD, where I build full-stack solutions
-                across the web stack — from responsive front-ends to robust
-                back-end services.
+                University of Dhaka, currently working as a Software Engineer
+                at Karooth IT (BD) Limited. I build enterprise systems across
+                both frontend and backend layers.
               </p>
               <p className="text-center lg:text-left">
-                My toolkit spans HTML, CSS, Angular, React, Next.js, and Node.js
-                on the front end, with Java Spring Boot, C#, and ASP.NET
-                powering the back end, backed by MySQL and MongoDB. I enjoy
-                turning real-world business requirements into reliable,
-                well-structured software.
+                My core stack includes Angular, TypeScript, JavaScript, HTML5,
+                SCSS, PrimeNG, and Bootstrap, with Java, Spring Boot, REST APIs,
+                Spring Security, JPA, and Hibernate on the backend. I also work
+                with MSSQL Server, PostgreSQL, Redis, RabbitMQ, MinIO,
+                Elasticsearch, and Microsoft Azure.
+              </p>
+              <p className="text-center lg:text-left">
+                I combine these engineering fundamentals with AI-assisted tools
+                and CLI workflows using Claude, Gemini, ChatGPT, and OpenCode.
+                They help me accelerate research, implementation, debugging,
+                testing, and documentation while I review and validate every
+                result for correctness, security, and maintainability.
               </p>
             </div>
           </div>
 
           <aside className="section-panel p-8 sm:p-10">
             <p className="text-sm uppercase tracking-[0.3em] font-bold text-cyan-600 dark:text-cyan-300">
-              Studio highlights
+              Engineering highlights
             </p>
             <div className="mt-8 space-y-6 text-slate-700 dark:text-slate-300">
               <div className="space-y-2 rounded-[2rem] border border-slate-200 dark:border-white/10 bg-white/90 dark:bg-white/5 p-6 shadow-sm shadow-slate-200/40 dark:shadow-black/20 transition-colors hover:border-cyan-200 dark:hover:border-cyan-400/20">
                 <p className="text-xs uppercase tracking-[0.25em] text-slate-400 dark:text-slate-500">
-                  Design focus
+                  Frontend engineering
                 </p>
                 <p className="font-semibold text-slate-900 dark:text-white">
-                  Clean, accessible interfaces that scale.
+                  Angular micro-frontends, reusable UI components, RBAC, and dashboards.
                 </p>
               </div>
               <div className="space-y-2 rounded-[2rem] border border-slate-200 dark:border-white/10 bg-white/90 dark:bg-white/5 p-6 shadow-sm shadow-slate-200/40 dark:shadow-black/20 transition-colors hover:border-cyan-200 dark:hover:border-cyan-400/20">
                 <p className="text-xs uppercase tracking-[0.25em] text-slate-400 dark:text-slate-500">
-                  Performance
+                  Backend &amp; security
                 </p>
                 <p className="font-semibold text-slate-900 dark:text-white">
-                  Smooth interactions with fast, modern tooling.
+                  Spring Boot REST APIs, JWT authentication, JPA, and Hibernate.
                 </p>
               </div>
               <div className="space-y-2 rounded-[2rem] border border-slate-200 dark:border-white/10 bg-white/90 dark:bg-white/5 p-6 shadow-sm shadow-slate-200/40 dark:shadow-black/20 transition-colors hover:border-cyan-200 dark:hover:border-cyan-400/20">
                 <p className="text-xs uppercase tracking-[0.25em] text-slate-400 dark:text-slate-500">
-                  Delivery
+                  Data &amp; infrastructure
                 </p>
                 <p className="font-semibold text-slate-900 dark:text-white">
-                  Projects built to ship quickly and feel premium.
+                  MSSQL, PostgreSQL, Redis, RabbitMQ, MinIO, and Elasticsearch.
+                </p>
+              </div>
+              <div className="space-y-2 rounded-[2rem] border border-slate-200 dark:border-white/10 bg-white/90 dark:bg-white/5 p-6 shadow-sm shadow-slate-200/40 dark:shadow-black/20 transition-colors hover:border-cyan-200 dark:hover:border-cyan-400/20">
+                <p className="text-xs uppercase tracking-[0.25em] text-slate-400 dark:text-slate-500">
+                  AI-assisted delivery
+                </p>
+                <p className="font-semibold text-slate-900 dark:text-white">
+                  Claude, Gemini, ChatGPT, and OpenCode for faster, carefully validated delivery.
                 </p>
               </div>
             </div>
@@ -164,7 +179,7 @@ export default function Home() {
         {[
           {
             title: "Education",
-            desc: "B.Sc. in Computer Science & Engineering, University of Dhaka (2024).",
+            desc: "BSc (Engg.) in Computer Science & Engineering, University of Dhaka (2019–2024).",
             color: "from-indigo-500 to-purple-600 dark:from-indigo-400 dark:to-purple-500",
             lightColor: "bg-indigo-50 dark:bg-indigo-500/10",
             textColor: "text-indigo-700 dark:text-indigo-300",
@@ -173,7 +188,7 @@ export default function Home() {
           },
           {
             title: "Experience",
-            desc: "Jr. Software Engineer at Karooth IT BD, building full-stack systems since Aug 2024.",
+            desc: "Software Engineer at Karooth IT (BD) Limited, building enterprise systems since August 2024.",
             color: "from-blue-500 to-teal-600 dark:from-cyan-400 dark:to-blue-500",
             lightColor: "bg-blue-50 dark:bg-cyan-500/10",
             textColor: "text-blue-700 dark:text-cyan-300",
@@ -181,8 +196,8 @@ export default function Home() {
             border: "border-blue-100 dark:border-cyan-400/20"
           },
           {
-            title: "Contact",
-            desc: "Ready to chat about your next project and collaboration.",
+            title: "Current Work",
+            desc: "Angular and Spring Boot solutions for SNSOP and Madrasa Institute Management systems.",
             color: "from-green-500 to-lime-600 dark:from-emerald-400 dark:to-teal-500",
             lightColor: "bg-green-50 dark:bg-emerald-500/10",
             textColor: "text-green-700 dark:text-emerald-300",

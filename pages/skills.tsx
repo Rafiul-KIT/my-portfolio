@@ -4,16 +4,69 @@ import Reveal from "../components/Reveal";
 
 const skillCategories = [
   {
-    title: "Frontend",
-    skills: ["HTML", "CSS", "Angular", "React", "Next.js"],
+    title: "Frontend Development",
+    skills: [
+      "Angular",
+      "TypeScript",
+      "JavaScript",
+      "HTML5",
+      "SCSS",
+      "PrimeNG",
+      "Bootstrap",
+      "Responsive Web Design",
+      "Component-Based Architecture",
+      "Reusable UI Components",
+      "Reactive Forms",
+      "Angular Routing",
+      "REST API Integration",
+      "Frontend Performance Optimization",
+    ],
   },
   {
-    title: "Backend",
-    skills: ["Node.js", "Java Spring Boot", "C#", "ASP.NET"],
+    title: "Backend & APIs",
+    skills: [
+      "Java",
+      "Spring Boot",
+      "RESTful API Development",
+      "Spring Security",
+      "JWT Authentication",
+      "JPA",
+      "Hibernate",
+      "OpenAPI / Swagger",
+      "Backend Service Development",
+      "Secure API Design",
+    ],
   },
   {
-    title: "Database & Tools",
-    skills: ["MySQL", "MongoDB", "Git", "GitHub"],
+    title: "Programming Languages",
+    skills: ["Java", "TypeScript", "JavaScript", "C", "C++", "C#", "ASP.NET"],
+  },
+  {
+    title: "Databases & Storage",
+    skills: ["MSSQL Server", "PostgreSQL", "Redis", "MinIO", "Database Design"],
+  },
+  {
+    title: "Tools & Messaging",
+    skills: [
+      "Git",
+      "GitHub",
+      "Postman",
+      "RabbitMQ",
+      "Elasticsearch",
+    ],
+  },
+  {
+    title: "DevOps & AI Tooling",
+    skills: [
+      "CI/CD Knowledge",
+      "Apache Tomcat",
+      "Microsoft Azure",
+      "Claude",
+      "Gemini",
+      "ChatGPT",
+      "OpenCode",
+      "AI-Assisted CLI Workflows",
+    ],
   },
 ];
 
@@ -24,7 +77,7 @@ export default function Skills() {
         <title>Skills & Tech Stack | Md Raffiul Islam</title>
         <meta
           name="description"
-          content="Technical skills of Md Raffiul Islam across frontend, backend, and database technologies."
+          content="Technical skills of Md Raffiul Islam across Angular, Spring Boot, databases, CI/CD, enterprise platforms, and AI-assisted development tools."
         />
       </Head>
       <div className="absolute top-16 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-gradient-to-tr from-cyan-100/30 to-blue-100/30 dark:from-cyan-500/10 dark:to-indigo-500/10 blur-[110px] -z-10" />
@@ -32,19 +85,22 @@ export default function Skills() {
       <section className="container-centered mb-20 max-w-3xl fade-in-up">
         <p className="text-xs font-bold uppercase tracking-[0.3em] text-cyan-600 dark:text-cyan-300">Skills & Tech Stack</p>
         <h1 className="mt-6 text-5xl font-black tracking-tight text-slate-900 dark:text-white sm:text-6xl">
-          Powering <span className="gradient-text">Modern Web</span>
+          Building <span className="gradient-text">Enterprise Software</span>
         </h1>
         <p className="mt-6 text-slate-600 dark:text-slate-400 leading-relaxed text-lg text-center">
-          I organize my capability into frontend, backend, and tooling so every project stays maintainable and ready to ship.
+          My stack covers frontend architecture, secure backend services, programming
+          languages, data platforms, and the tools needed to deliver reliable systems.
         </p>
       </section>
 
-      <section className="grid gap-8 md:grid-cols-3 lg:max-w-6xl mx-auto">
+      <section className="mx-auto grid gap-8 md:grid-cols-2 xl:max-w-7xl xl:grid-cols-3">
         {skillCategories.map((category, i) => (
-          <Reveal key={category.title} delay={i * 120}>
-            <div className="group glass-card rounded-[2.5rem] p-10 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-cyan-500/10 text-center">
-              <h2 className="text-2xl font-black text-slate-900 dark:text-white mb-10 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors">{category.title}</h2>
-              <div className="grid gap-3">
+          <Reveal key={category.title} delay={i * 120} className="h-full">
+            <div className="group glass-card flex h-[32rem] flex-col rounded-[2.5rem] p-8 text-center transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-cyan-500/10 sm:p-10">
+              <h2 className="mb-6 flex min-h-16 shrink-0 items-center justify-center text-2xl font-black text-slate-900 transition-colors group-hover:text-cyan-600 dark:text-white dark:group-hover:text-cyan-300">
+                {category.title}
+              </h2>
+              <div className="skill-scroll grid flex-1 content-start gap-3 overflow-y-auto pr-2">
                 {category.skills.map((skill) => (
                   <SkillBadge key={skill} label={skill} />
                 ))}

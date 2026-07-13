@@ -27,10 +27,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div className="app-shell flex h-screen flex-col overflow-hidden bg-transparent text-slate-900 selection:bg-cyan-100 selection:text-cyan-900">
       <Head>
-        <title>Md Raffiul Islam — Full-Stack Developer</title>
+        <title>Md Raffiul Islam — Software Engineer</title>
         <meta
           name="description"
-          content="Portfolio of Md Raffiul Islam, a Jr. Software Engineer at Karooth IT BD building full-stack web applications."
+          content="Portfolio of Md Raffiul Islam, a Software Engineer at Karooth IT (BD) Limited building enterprise applications with Angular, TypeScript, Java, and Spring Boot."
         />
       </Head>
       <Navbar />

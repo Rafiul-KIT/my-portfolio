@@ -10,7 +10,7 @@ export default function Projects() {
         <title>Projects | Md Raffiul Islam</title>
         <meta
           name="description"
-          content="Featured software projects built by Md Raffiul Islam."
+          content="Enterprise software projects built by Md Raffiul Islam with Angular, TypeScript, Java, and Spring Boot."
         />
       </Head>
       <section className="container-centered mb-20 max-w-3xl fade-in-up">
@@ -20,7 +20,8 @@ export default function Projects() {
             Highlighted <span className="gradient-text">Work</span>
           </h1>
           <p className="mt-6 text-slate-600 dark:text-slate-400 leading-relaxed text-lg text-center">
-            Browse the top projects that demonstrate modern UI, strong responsive design, and code that is built to scale.
+            Explore enterprise platforms I have helped build across social protection,
+            education, training, learning management, and school administration.
           </p>
         </div>
       </section>
