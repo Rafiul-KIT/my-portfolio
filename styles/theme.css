@@ -1,0 +1,97 @@
+:root {
+  --surface: rgba(255, 255, 255, 0.9);
+  --surface-strong: rgba(255, 255, 255, 0.98);
+  --surface-soft: rgba(255, 255, 255, 0.7);
+  --surface-border: rgba(0, 0, 0, 0.08);
+  --text: #1e293b;
+  --muted: #64748b;
+  --accent: #0891b2;
+  --accent-soft: rgba(8, 145, 178, 0.1);
+  --accent-strong: #0e7490;
+
+  --grad-primary: linear-gradient(135deg, #0891b2 0%, #2563eb 100%);
+  --grad-surface: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 250, 252, 0.8) 100%);
+  --grad-glow: radial-gradient(circle at center, rgba(8, 145, 178, 0.05) 0%, transparent 70%);
+
+  --body-bg: linear-gradient(180deg, #e6f9ff 0%, #f3fbff 45%, #eef7ff 100%);
+  --body-bg-image: radial-gradient(circle at 10% 10%, rgba(6, 182, 249, 0.06), transparent 18%),
+    radial-gradient(circle at 85% 15%, rgba(99, 102, 241, 0.03), transparent 25%),
+    linear-gradient(180deg, #e6f9ff 0%, #f3fbff 45%, #eef7ff 100%);
+
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.05);
+  --glass-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.04);
+  --glass-hover-border: rgba(8, 145, 178, 0.2);
+  --glass-hover-bg: rgba(255, 255, 255, 0.95);
+  --glass-hover-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.04);
+
+  --hero-border: rgba(148, 163, 184, 0.18);
+  --hero-bg: rgba(255, 255, 255, 0.92);
+  --hero-shadow: 0 30px 80px -50px rgba(15, 23, 42, 0.18);
+
+  --panel-border: rgba(226, 232, 240, 0.85);
+  --panel-bg: rgba(248, 250, 252, 0.92);
+  --panel-shadow: 0 24px 64px -32px rgba(15, 23, 42, 0.1);
+
+  --chip-bg: rgba(14, 116, 144, 0.08);
+  --chip-border: transparent;
+  --chip-color: #0e7490;
+  --chip-shadow: 0 12px 30px -24px rgba(6, 182, 249, 0.25);
+
+  --nav-underline: linear-gradient(90deg, #06b6d4, #2563eb);
+
+  --selection-bg: rgba(8, 145, 178, 0.2);
+  --selection-color: #0e7490;
+}
+
+:root.dark {
+  --surface: rgba(15, 23, 42, 0.72);
+  --surface-strong: rgba(15, 23, 42, 0.92);
+  --surface-soft: rgba(15, 23, 42, 0.5);
+  --surface-border: rgba(148, 163, 184, 0.14);
+  --text: #e6edf7;
+  --muted: #8ea0bd;
+  --accent: #22d3ee;
+  --accent-soft: rgba(34, 211, 238, 0.12);
+  --accent-strong: #67e8f9;
+
+  --grad-primary: linear-gradient(135deg, #22d3ee 0%, #6366f1 100%);
+  --grad-surface: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(10, 14, 26, 0.85) 100%);
+  --grad-glow: radial-gradient(circle at center, rgba(34, 211, 238, 0.12) 0%, transparent 70%);
+
+  --body-bg: linear-gradient(180deg, #05070d 0%, #070b16 45%, #05070d 100%);
+  --body-bg-image: radial-gradient(circle at 12% 8%, rgba(34, 211, 238, 0.1), transparent 22%),
+    radial-gradient(circle at 88% 18%, rgba(99, 102, 241, 0.1), transparent 28%),
+    radial-gradient(circle at 50% 100%, rgba(34, 211, 238, 0.05), transparent 35%),
+    linear-gradient(180deg, #05070d 0%, #070b16 45%, #05070d 100%);
+
+  --glass-bg: rgba(15, 23, 42, 0.6);
+  --glass-border: rgba(148, 163, 184, 0.12);
+  --glass-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.3);
+  --glass-hover-border: rgba(34, 211, 238, 0.35);
+  --glass-hover-bg: rgba(15, 23, 42, 0.85);
+  --glass-hover-shadow: 0 8px 40px -8px rgba(34, 211, 238, 0.15);
+
+  --hero-border: rgba(148, 163, 184, 0.14);
+  --hero-bg: rgba(10, 14, 26, 0.85);
+  --hero-shadow: 0 30px 80px -40px rgba(34, 211, 238, 0.15), 0 30px 80px -50px rgba(0, 0, 0, 0.6);
+
+  --panel-border: rgba(148, 163, 184, 0.14);
+  --panel-bg: rgba(15, 23, 42, 0.7);
+  --panel-shadow: 0 24px 64px -32px rgba(0, 0, 0, 0.5);
+
+  --chip-bg: rgba(34, 211, 238, 0.08);
+  --chip-border: rgba(34, 211, 238, 0.15);
+  --chip-color: #67e8f9;
+  --chip-shadow: 0 12px 30px -24px rgba(34, 211, 238, 0.4);
+
+  --nav-underline: linear-gradient(90deg, #22d3ee, #6366f1);
+
+  --selection-bg: rgba(34, 211, 238, 0.25);
+  --selection-color: #e6edf7;
+}
+
+::selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-color);
+}
