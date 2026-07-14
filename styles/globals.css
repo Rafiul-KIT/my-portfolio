@@ -1,4 +1,3 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 @import "./theme.css";
 @import "tailwindcss";
 
@@ -6,7 +5,6 @@
 
 :root {
   color-scheme: light;
-  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root.dark {
@@ -18,12 +16,23 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   scroll-padding-top: 6rem;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-color: rgba(8, 145, 178, 0.65) transparent;
+  scrollbar-width: thin;
 }
 
 html::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: rgba(8, 145, 178, 0.65);
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
 }
 
 @media print {
@@ -51,11 +60,9 @@ body {
   min-height: 100%;
   margin: 0;
   overflow-x: hidden;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
   background: var(--body-bg);
   background-image: var(--body-bg-image);
-  background-attachment: fixed;
+  background-attachment: scroll;
   transition: background-color 300ms ease;
   color: var(--text);
   text-rendering: optimizeLegibility;
@@ -63,11 +70,36 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-@layer base {
-  html {
-    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  }
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
 
+#main-content:focus {
+  outline: none;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  transform: translateY(-180%);
+  border-radius: 0.75rem;
+  background: #0f172a;
+  padding: 0.75rem 1rem;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25);
+  transition: transform 150ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  color: #fff;
+}
+
+@layer base {
   body {
     line-height: 1.6;
   }
@@ -152,15 +184,6 @@ body {
     color: var(--muted);
   }
 
-  @keyframes blink {
-    0%, 100% { opacity: 1; filter: brightness(1); }
-    50% { opacity: 0.7; filter: brightness(1.3); }
-  }
-
-  .animate-blink {
-    animation: blink 1.5s infinite ease-in-out;
-  }
-
   /* Hide scrollbar utility */
   .hide-scrollbar {
     -ms-overflow-style: none;  /* IE and Edge */
@@ -194,7 +217,6 @@ body {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 700ms cubic-bezier(.2,.7,.2,1), transform 700ms cubic-bezier(.2,.7,.2,1);
-    will-change: opacity, transform;
   }
 
   .reveal.in-view {
@@ -224,6 +246,43 @@ body {
       animation: none;
     }
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes galleryImageMotion {
+  0% {
+    transform: scale(1.01);
+  }
+  50% {
+    transform: scale(1.07);
+  }
+  100% {
+    transform: scale(1.01);
+  }
+}
+
+.gallery-image-motion {
+  animation: galleryImageMotion 6.5s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
 }
 
 .hero-card {

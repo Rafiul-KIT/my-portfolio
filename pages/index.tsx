@@ -1,228 +1,265 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import ProjectCard from "../components/ProjectCard";
 import Reveal from "../components/Reveal";
+import { projects } from "../data/projects";
+import profileImage from "../public/images/profile-raffiul.webp";
+
+const selectedProjectSlugs = ["snsop", "mims", "itlms"];
+const selectedProjects = selectedProjectSlugs
+  .map((slug) => projects.find((project) => project.slug === slug))
+  .filter((project): project is (typeof projects)[number] => Boolean(project));
+
+const deliveryStrengths = [
+  {
+    title: "Enterprise frontend engineering",
+    description:
+      "Angular micro frontends, reusable components, complex forms, role-aware navigation, and responsive dashboards.",
+  },
+  {
+    title: "Backend services & security",
+    description:
+      "Spring Boot REST APIs, JWT authentication, authorization, JPA, Hibernate, and maintainable domain services.",
+  },
+  {
+    title: "Data & platform integration",
+    description:
+      "MSSQL, PostgreSQL, Redis, RabbitMQ, MinIO, Elasticsearch, Apache Tomcat, and Azure workflows.",
+  },
+];
 
 export default function Home() {
   return (
-    <main className="relative mx-auto max-w-7xl px-6 pt-24 pb-20 sm:px-8 lg:px-10">
+    <main id="main-content" tabIndex={-1} className="relative mx-auto max-w-7xl px-6 pb-20 pt-20 sm:px-8 lg:px-10">
       <Head>
-        <title>Md Raffiul Islam — Software Engineer</title>
+        <title>Md Raffiul Islam - Software Engineer</title>
         <meta
           name="description"
-          content="Portfolio of Md Raffiul Islam, a Software Engineer combining Angular, Spring Boot, and AI-assisted development workflows to build enterprise applications."
+          content="Portfolio of Md Raffiul Islam, a Software Engineer building secure enterprise platforms with Angular, Spring Boot, and carefully validated AI-assisted workflows."
         />
       </Head>
-      {/* Decorative glow blobs */}
-      <div className="absolute top-40 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-gradient-to-tr from-cyan-100/40 to-blue-100/40 dark:from-cyan-500/15 dark:to-indigo-500/15 blur-[100px] dark:blur-[120px] -z-10" />
-      <div className="absolute top-[60rem] right-0 w-[400px] h-[300px] bg-gradient-to-tr from-indigo-100/20 to-cyan-100/20 dark:from-indigo-500/10 dark:to-cyan-500/10 blur-[100px] dark:blur-[110px] -z-10" />
 
-      <section className="fade-in-up hero-card relative overflow-hidden px-8 py-14 sm:px-12 sm:py-16">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/60 dark:from-cyan-500/10 via-transparent to-blue-100/10 dark:to-indigo-500/5 pointer-events-none" />
-        <div className="relative container-centered space-y-12">
-          <div className="relative flex flex-col md:flex-row items-center justify-between w-full min-h-[9rem] gap-8">
-            {/* Photo Container */}
-            <div className="relative z-10 shrink-0">
-              <div className="absolute inset-0 bg-gradient-to-tr from-cyan-200 to-blue-300 dark:from-cyan-400 dark:to-indigo-500 rounded-full blur-2xl opacity-30 animate-pulse" />
-              <div className="relative h-32 w-32 md:h-44 md:w-44 rounded-full border-4 border-white dark:border-white/10 bg-white dark:bg-slate-900 shadow-2xl shadow-cyan-200/50 dark:shadow-cyan-500/20 overflow-hidden mx-auto">
-                <Image
-                  src="/images/profile_rafi.png"
-                  alt="Md Raffiul Islam"
-                  width={320}
-                  height={320}
-                  className="h-full w-full object-cover"
-                />
-              </div>
+      <div className="absolute left-1/2 top-32 -z-10 h-[420px] w-[680px] max-w-[90vw] -translate-x-1/2 bg-gradient-to-tr from-cyan-100/50 to-indigo-100/30 blur-[110px] dark:from-cyan-500/15 dark:to-indigo-500/10" />
+
+      <section className="fade-in-up hero-card relative overflow-hidden px-7 py-10 sm:px-10 sm:py-12 lg:px-14 lg:py-16">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-cyan-50/70 via-transparent to-indigo-100/30 dark:from-cyan-500/10 dark:to-indigo-500/5" />
+
+        <div className="relative grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
+          <div className="text-center lg:text-left">
+            <div className="inline-flex max-w-full items-center justify-center gap-2 rounded-full border border-cyan-100 bg-cyan-50 px-4 py-2 text-center text-[10px] font-bold uppercase leading-relaxed tracking-[0.16em] text-cyan-700 shadow-sm shadow-cyan-100/60 dark:border-cyan-400/20 dark:bg-cyan-400/10 dark:text-cyan-300 dark:shadow-cyan-500/10 sm:tracking-[0.25em]">
+              <span aria-hidden="true" className="h-2 w-2 rounded-full bg-emerald-500 dark:bg-emerald-400" />
+              Software Engineer at Karooth IT (BD) Limited
             </div>
 
-            {/* Name Container */}
-            <div className="text-center md:flex-1 md:absolute md:inset-0 md:flex md:items-center md:justify-center md:pointer-events-none">
-              <div className="md:pointer-events-auto">
-                <h2 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl uppercase">
-                  Md Raffiul <span className="gradient-text">Islam</span>
-                </h2>
-                <p className="text-base font-bold uppercase tracking-[0.3em] text-cyan-600 dark:text-cyan-300 mt-2">
-                  Software Engineer · Angular &amp; Spring Boot
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full bg-cyan-50 dark:bg-cyan-400/10 border border-cyan-100 dark:border-cyan-400/20 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.3em] text-cyan-700 dark:text-cyan-300 shadow-sm shadow-cyan-100/60 dark:shadow-cyan-500/10">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"></span>
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500 dark:bg-cyan-400"></span>
-              </span>
-              Enterprise Application Development
-            </div>
-
-            <h1 className="text-5xl font-black tracking-tight text-slate-900 dark:text-white sm:text-7xl lg:text-7xl leading-[1.05]">
-              I build{" "}
-              <span className="gradient-text">secure enterprise applications</span>
+            <h1 className="mt-7 text-center text-4xl font-black leading-[1.05] tracking-tight text-slate-900 dark:text-white sm:text-6xl lg:text-left lg:text-7xl">
+              Engineering secure platforms for{" "}
+              <span className="gradient-text">complex operations</span>
             </h1>
-
-            <p className="max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-400 sm:text-xl mx-auto text-center">
-              I develop scalable Angular interfaces and Spring Boot APIs for complex
-              business workflows, with a focus on security, performance, and maintainability.
+            <p className="mx-auto mt-7 max-w-2xl text-center text-lg leading-relaxed text-slate-600 dark:text-slate-400 sm:text-xl lg:mx-0 lg:text-left">
+              I build scalable Angular interfaces and Spring Boot services for social protection,
+              education, training, and institutional management systems—with security,
+              maintainability, and real operational workflows at the center.
             </p>
+
+            <div className="mt-9 flex flex-wrap justify-center gap-4 lg:justify-start">
+              <Link
+                href="/projects"
+                className="inline-flex min-h-14 items-center justify-center rounded-xl bg-indigo-600 px-8 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-200 transition hover:-translate-y-0.5 hover:bg-indigo-700 dark:bg-indigo-500 dark:shadow-indigo-500/20 dark:hover:bg-indigo-400"
+              >
+                Explore my work
+              </Link>
+              <Link
+                href="/resume"
+                className="inline-flex min-h-14 items-center justify-center rounded-xl border border-slate-200 bg-white/80 px-8 py-3 text-sm font-bold text-slate-800 transition hover:-translate-y-0.5 hover:border-cyan-400 hover:text-cyan-700 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:border-cyan-400 dark:hover:text-cyan-300"
+              >
+                View resume
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex min-h-14 items-center justify-center rounded-xl border border-emerald-200 bg-emerald-50 px-8 py-3 text-sm font-bold text-emerald-800 transition hover:-translate-y-0.5 hover:border-emerald-400 dark:border-emerald-400/20 dark:bg-emerald-400/10 dark:text-emerald-300"
+              >
+                Contact me
+              </Link>
+            </div>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-5 pt-4">
-            <Link
-              href="/resume"
-              className="inline-flex min-h-[3.5rem] items-center justify-center rounded-2xl bg-indigo-600 dark:bg-indigo-500 px-10 py-4 text-sm font-bold text-white transition-all hover:bg-indigo-700 dark:hover:bg-indigo-400 hover:scale-105 shadow-xl shadow-indigo-200 dark:shadow-indigo-500/30 border-2 border-indigo-400 dark:border-indigo-400/50"
-            >
-              View Resume
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex min-h-[3.5rem] items-center justify-center rounded-2xl bg-emerald-700 dark:bg-emerald-500 px-10 py-4 text-sm font-bold text-white transition-all hover:bg-emerald-800 dark:hover:bg-emerald-400 hover:scale-105 shadow-xl shadow-emerald-200 dark:shadow-emerald-500/30 border-2 border-emerald-500 dark:border-emerald-400/50 animate-blink"
-            >
-              Hire Me
-            </Link>
-          </div>
-
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              "Angular frontends",
-              "Spring Boot APIs",
-              "Scalable enterprise systems",
-              "AI-assisted workflows",
-            ].map((item) => (
-              <div key={item} className="highlight-chip justify-center">
-                {item}
+          <aside className="mx-auto w-full max-w-md rounded-[2rem] border border-white/80 bg-white/75 p-6 shadow-2xl shadow-slate-200/60 backdrop-blur-md dark:border-white/10 dark:bg-slate-900/70 dark:shadow-black/30 sm:p-8">
+            <div className="flex flex-col items-center text-center">
+              <div className="relative">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-300 to-indigo-400 opacity-35 blur-2xl dark:from-cyan-400 dark:to-indigo-500" />
+                <div className="relative h-36 w-36 overflow-hidden rounded-full border-4 border-white bg-white shadow-xl dark:border-white/10 dark:bg-slate-900 sm:h-44 sm:w-44">
+                  <Image
+                    src={profileImage}
+                    alt="Md Raffiul Islam"
+                    sizes="(max-width: 639px) 144px, 176px"
+                    placeholder="blur"
+                    loading="eager"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
-            ))}
-          </div>
+              <h2 className="mt-6 text-3xl font-black text-slate-900 dark:text-white">
+                Md Raffiul Islam
+              </h2>
+              <p className="mt-2 text-sm font-semibold text-cyan-700 dark:text-cyan-300">
+                Software Engineer &middot; Full-stack Enterprise Systems
+              </p>
+              <p className="mt-5 max-w-sm text-center text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                Working across frontend, backend, data, security, integration, and deployment to
+                turn complex requirements into maintainable software.
+              </p>
+            </div>
+
+            <dl className="mt-7 grid grid-cols-3 gap-3 border-t border-slate-200/80 pt-6 text-center dark:border-white/10">
+              <div>
+                <dt className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-500">Work</dt>
+                <dd className="mt-1 text-lg font-black text-slate-900 dark:text-white">{projects.length}</dd>
+                <dd className="text-[10px] text-slate-500 dark:text-slate-400">platforms</dd>
+              </div>
+              <div className="border-x border-slate-200/80 dark:border-white/10">
+                <dt className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-500">Role</dt>
+                <dd className="mt-1 text-sm font-black text-slate-900 dark:text-white">Full-stack</dd>
+                <dd className="text-[10px] text-slate-500 dark:text-slate-400">engineering</dd>
+              </div>
+              <div>
+                <dt className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-500">Since</dt>
+                <dd className="mt-1 text-lg font-black text-slate-900 dark:text-white">2024</dd>
+                <dd className="text-[10px] text-slate-500 dark:text-slate-400">at Karooth IT</dd>
+              </div>
+            </dl>
+          </aside>
         </div>
       </section>
 
-      <section id="about" className="mt-48 container-centered">
-        <Reveal className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-start">
-          <div>
-            <p className="section-heading text-xs font-bold uppercase tracking-[0.3em] text-cyan-600 dark:text-cyan-300">
+      <section aria-labelledby="selected-work" className="mt-32">
+        <Reveal>
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-cyan-600 dark:text-cyan-300">
+              Selected work
+            </p>
+            <h2 id="selected-work" className="mt-5 text-4xl font-black text-slate-900 dark:text-white sm:text-5xl">
+              Enterprise software built around{" "}
+              <span className="gradient-text">real operations</span>
+            </h2>
+            <p className="mt-6 max-w-2xl text-center text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+              A selection of platforms covering social protection, institutional administration,
+              and the complete training lifecycle.
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {selectedProjects.map((project, index) => (
+            <Reveal key={project.slug} className="h-full" delay={index * 100}>
+              <ProjectCard
+                title={project.title}
+                description={project.description}
+                tags={project.stack}
+                href={`/projects/${project.slug}`}
+                image={project.image}
+              />
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal className="mt-10 flex justify-center">
+          <Link
+            href="/projects"
+            className="inline-flex min-h-12 items-center justify-center rounded-xl border border-slate-300 bg-white/70 px-7 py-3 text-sm font-bold text-slate-700 transition hover:border-cyan-400 hover:text-cyan-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:border-cyan-400 dark:hover:text-cyan-300"
+          >
+            View all projects
+          </Link>
+        </Reveal>
+      </section>
+
+      <section id="about" aria-labelledby="about-heading" className="mt-36 scroll-mt-28">
+        <Reveal className="grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+          <div className="text-center lg:text-left">
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-cyan-600 dark:text-cyan-300 lg:text-left">
               About me
             </p>
-            <h2 className="mt-4 text-4xl font-extrabold text-slate-900 dark:text-white sm:text-5xl lg:max-w-4xl leading-tight">
-              Building full-stack systems with{" "}
-              <span className="gradient-text">security and scale</span>.
+            <h2 id="about-heading" className="mt-5 text-center text-4xl font-black leading-tight text-slate-900 dark:text-white sm:text-5xl lg:text-left">
+              Engineering fundamentals first.{" "}
+              <span className="gradient-text">AI-assisted speed second</span>
             </h2>
+            <div className="mt-8 space-y-5 text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+              <p className="text-center lg:text-left">
+                I&apos;m a Computer Science &amp; Engineering graduate from the University of Dhaka
+                and a Software Engineer at Karooth IT (BD) Limited. I contribute across Angular
+                micro frontends, Spring Boot services, databases, messaging, security, and
+                enterprise integrations.
+              </p>
+              <p className="text-center lg:text-left">
+                I use Claude, Gemini, ChatGPT, and OpenCode to accelerate research, implementation,
+                debugging, tests, and documentation. Every result is still reviewed and validated
+                for correctness, security, and maintainability—the tools increase throughput, while
+                engineering judgment remains responsible for the outcome.
+              </p>
+            </div>
 
-            <div className="mt-10 grid gap-6 text-slate-600 dark:text-slate-400 leading-relaxed text-lg">
-              <p className="text-center lg:text-left">
-                I&apos;m a Computer Science &amp; Engineering graduate from the
-                University of Dhaka, currently working as a Software Engineer
-                at Karooth IT (BD) Limited. I build enterprise systems across
-                both frontend and backend layers.
-              </p>
-              <p className="text-center lg:text-left">
-                My core stack includes Angular, TypeScript, JavaScript, HTML5,
-                SCSS, PrimeNG, and Bootstrap, with Java, Spring Boot, REST APIs,
-                Spring Security, JPA, and Hibernate on the backend. I also work
-                with MSSQL Server, PostgreSQL, Redis, RabbitMQ, MinIO,
-                Elasticsearch, and Microsoft Azure.
-              </p>
-              <p className="text-center lg:text-left">
-                I combine these engineering fundamentals with AI-assisted tools
-                and CLI workflows using Claude, Gemini, ChatGPT, and OpenCode.
-                They help me accelerate research, implementation, debugging,
-                testing, and documentation while I review and validate every
-                result for correctness, security, and maintainability.
-              </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
+              {["Angular", "TypeScript", "Java", "Spring Boot", "REST APIs", "MSSQL", "PostgreSQL", "CI/CD"].map((skill) => (
+                <span key={skill} className="rounded-full border border-slate-200 bg-white/70 px-4 py-2 text-xs font-bold text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
+                  {skill}
+                </span>
+              ))}
             </div>
           </div>
 
-          <aside className="section-panel p-8 sm:p-10">
-            <p className="text-sm uppercase tracking-[0.3em] font-bold text-cyan-600 dark:text-cyan-300">
-              Engineering highlights
+          <aside className="section-panel p-7 sm:p-9">
+            <p className="text-center text-xs font-bold uppercase tracking-[0.3em] text-cyan-600 dark:text-cyan-300">
+              What I bring
             </p>
-            <div className="mt-8 space-y-6 text-slate-700 dark:text-slate-300">
-              <div className="space-y-2 rounded-[2rem] border border-slate-200 dark:border-white/10 bg-white/90 dark:bg-white/5 p-6 shadow-sm shadow-slate-200/40 dark:shadow-black/20 transition-colors hover:border-cyan-200 dark:hover:border-cyan-400/20">
-                <p className="text-xs uppercase tracking-[0.25em] text-slate-400 dark:text-slate-500">
-                  Frontend engineering
-                </p>
-                <p className="font-semibold text-slate-900 dark:text-white">
-                  Angular micro-frontends, reusable UI components, RBAC, and dashboards.
-                </p>
-              </div>
-              <div className="space-y-2 rounded-[2rem] border border-slate-200 dark:border-white/10 bg-white/90 dark:bg-white/5 p-6 shadow-sm shadow-slate-200/40 dark:shadow-black/20 transition-colors hover:border-cyan-200 dark:hover:border-cyan-400/20">
-                <p className="text-xs uppercase tracking-[0.25em] text-slate-400 dark:text-slate-500">
-                  Backend &amp; security
-                </p>
-                <p className="font-semibold text-slate-900 dark:text-white">
-                  Spring Boot REST APIs, JWT authentication, JPA, and Hibernate.
-                </p>
-              </div>
-              <div className="space-y-2 rounded-[2rem] border border-slate-200 dark:border-white/10 bg-white/90 dark:bg-white/5 p-6 shadow-sm shadow-slate-200/40 dark:shadow-black/20 transition-colors hover:border-cyan-200 dark:hover:border-cyan-400/20">
-                <p className="text-xs uppercase tracking-[0.25em] text-slate-400 dark:text-slate-500">
-                  Data &amp; infrastructure
-                </p>
-                <p className="font-semibold text-slate-900 dark:text-white">
-                  MSSQL, PostgreSQL, Redis, RabbitMQ, MinIO, and Elasticsearch.
-                </p>
-              </div>
-              <div className="space-y-2 rounded-[2rem] border border-slate-200 dark:border-white/10 bg-white/90 dark:bg-white/5 p-6 shadow-sm shadow-slate-200/40 dark:shadow-black/20 transition-colors hover:border-cyan-200 dark:hover:border-cyan-400/20">
-                <p className="text-xs uppercase tracking-[0.25em] text-slate-400 dark:text-slate-500">
-                  AI-assisted delivery
-                </p>
-                <p className="font-semibold text-slate-900 dark:text-white">
-                  Claude, Gemini, ChatGPT, and OpenCode for faster, carefully validated delivery.
-                </p>
-              </div>
+            <div className="mt-7 space-y-4">
+              {deliveryStrengths.map((strength, index) => (
+                <div key={strength.title} className="rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-sm shadow-slate-200/30 dark:border-white/10 dark:bg-white/5 dark:shadow-black/20">
+                  <div className="flex items-start gap-4">
+                    <span aria-hidden="true" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-cyan-50 text-sm font-black text-cyan-700 dark:bg-cyan-400/10 dark:text-cyan-300">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3 className="text-left text-base font-black text-slate-900 dark:text-white">{strength.title}</h3>
+                      <p className="mt-2 text-left text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                        {strength.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
+            <Link
+              href="/skills"
+              className="mt-7 inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-slate-900 px-6 py-3 text-sm font-bold text-white transition hover:bg-slate-800 dark:bg-gradient-to-r dark:from-cyan-500 dark:to-indigo-500 dark:hover:brightness-110"
+            >
+              Explore the full skill set
+            </Link>
           </aside>
         </Reveal>
       </section>
 
-      <section className="mt-40 grid gap-10 md:grid-cols-3">
-        {[
-          {
-            title: "Education",
-            desc: "BSc (Engg.) in Computer Science & Engineering, University of Dhaka (2019–2024).",
-            color: "from-indigo-500 to-purple-600 dark:from-indigo-400 dark:to-purple-500",
-            lightColor: "bg-indigo-50 dark:bg-indigo-500/10",
-            textColor: "text-indigo-700 dark:text-indigo-300",
-            shadow: "shadow-indigo-200/50 dark:shadow-indigo-500/10",
-            border: "border-indigo-100 dark:border-indigo-400/20"
-          },
-          {
-            title: "Experience",
-            desc: "Software Engineer at Karooth IT (BD) Limited, building enterprise systems since August 2024.",
-            color: "from-blue-500 to-teal-600 dark:from-cyan-400 dark:to-blue-500",
-            lightColor: "bg-blue-50 dark:bg-cyan-500/10",
-            textColor: "text-blue-700 dark:text-cyan-300",
-            shadow: "shadow-blue-200/50 dark:shadow-cyan-500/10",
-            border: "border-blue-100 dark:border-cyan-400/20"
-          },
-          {
-            title: "Current Work",
-            desc: "Angular and Spring Boot solutions for SNSOP and Madrasa Institute Management systems.",
-            color: "from-green-500 to-lime-600 dark:from-emerald-400 dark:to-teal-500",
-            lightColor: "bg-green-50 dark:bg-emerald-500/10",
-            textColor: "text-green-700 dark:text-emerald-300",
-            shadow: "shadow-green-200/50 dark:shadow-emerald-500/10",
-            border: "border-green-100 dark:border-emerald-400/20"
-          },
-        ].map((card, i) => (
-          <Reveal key={card.title} delay={i * 120}>
-            <div
-              className={`group relative overflow-hidden glass-card rounded-[3rem] p-12 transition-all duration-500 hover:-translate-y-2 text-center border-2 ${card.border} shadow-2xl ${card.shadow}`}
-            >
-              <div className={`absolute top-0 left-0 w-full h-2 bg-gradient-to-r ${card.color}`} />
-              <h3 className="text-2xl font-black text-slate-900 dark:text-white">
-                <span className={`inline-block px-8 py-2 rounded-2xl ${card.lightColor} ${card.textColor} transition-transform group-hover:scale-110`}>
-                  {card.title}
-                </span>
-              </h3>
-              <p className="mt-8 text-slate-600 dark:text-slate-400 leading-relaxed text-base font-medium">
-                {card.desc}
-              </p>
-              <div className={`mt-8 inline-flex h-1.5 w-12 rounded-full bg-gradient-to-r ${card.color} opacity-40`} />
-            </div>
-          </Reveal>
-        ))}
-      </section>
+      <Reveal>
+        <section className="relative mt-36 overflow-hidden rounded-[2.5rem] border border-cyan-100 bg-gradient-to-br from-cyan-50 to-indigo-50 px-7 py-12 text-center shadow-xl shadow-cyan-100/30 dark:border-cyan-400/20 dark:from-cyan-500/10 dark:to-indigo-500/10 dark:shadow-cyan-500/5 sm:px-12 sm:py-14">
+          <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500" />
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-cyan-700 dark:text-cyan-300">
+            Let&apos;s work together
+          </p>
+          <h2 className="mx-auto mt-5 max-w-3xl text-4xl font-black leading-tight text-slate-900 dark:text-white sm:text-5xl">
+            Need an engineer who can work across the complete delivery stack?
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+            Let&apos;s discuss your application, architecture, integration, or modernization challenge.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link href="/contact" className="inline-flex min-h-14 items-center justify-center rounded-xl bg-indigo-600 px-8 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-200 transition hover:-translate-y-0.5 hover:bg-indigo-700 dark:bg-indigo-500 dark:shadow-indigo-500/20 dark:hover:bg-indigo-400">
+              Start a conversation
+            </Link>
+            <Link href="/resume" className="inline-flex min-h-14 items-center justify-center rounded-xl border border-slate-300 bg-white/80 px-8 py-3 text-sm font-bold text-slate-800 transition hover:-translate-y-0.5 hover:border-cyan-400 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:border-cyan-400">
+              Review my resume
+            </Link>
+          </div>
+        </section>
+      </Reveal>
     </main>
   );
 }

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
+import ResumeLoadingState from "./ResumeLoadingState";
 
 pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 
@@ -13,6 +14,7 @@ export default function ResumePdfViewer() {
   const [numPages, setNumPages] = useState(0);
   const [pdfSource, setPdfSource] = useState("");
   const [error, setError] = useState("");
+  const [firstPageRendered, setFirstPageRendered] = useState(false);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -54,7 +56,11 @@ export default function ResumePdfViewer() {
   }
 
   return (
-    <div ref={containerRef} className="w-full">
+    <div
+      ref={containerRef}
+      aria-busy={!error && !firstPageRendered}
+      className="w-full"
+    >
       {error ? (
         <div className="rounded-xl border border-red-200 bg-white p-8 text-center text-red-700 shadow-lg">
           <p className="font-bold">The PDF preview could not be loaded.</p>
@@ -62,29 +68,43 @@ export default function ResumePdfViewer() {
         </div>
       ) : null}
 
-      {containerWidth > 0 && pdfSource ? (
-        <Document
-          file={pdfSource}
-          onLoadSuccess={handleLoadSuccess}
-          onLoadError={(loadError) => setError(loadError.message)}
-          loading={
-            <div className="rounded-xl bg-white p-12 text-center text-slate-600 shadow-lg">
-              Loading resume…
+      {!error ? (
+        <div className="grid">
+          <div className="col-start-1 row-start-1">
+            <ResumeLoadingState isHidden={firstPageRendered} />
+          </div>
+
+          {containerWidth > 0 && pdfSource ? (
+            <div
+              className={`col-start-1 row-start-1 transition-opacity duration-300 ${
+                firstPageRendered ? "opacity-100" : "pointer-events-none opacity-0"
+              }`}
+            >
+              <Document
+                file={pdfSource}
+                onLoadSuccess={handleLoadSuccess}
+                onLoadError={(loadError) => setError(loadError.message)}
+                loading={null}
+                className="space-y-4"
+              >
+                {Array.from({ length: numPages }, (_, index) => (
+                  <Page
+                    key={`resume-page-${index + 1}`}
+                    pageNumber={index + 1}
+                    width={Math.floor(containerWidth)}
+                    renderAnnotationLayer={false}
+                    renderTextLayer={false}
+                    loading={null}
+                    onRenderSuccess={
+                      index === 0 ? () => setFirstPageRendered(true) : undefined
+                    }
+                    className="mx-auto overflow-hidden rounded-xl bg-white shadow-lg"
+                  />
+                ))}
+              </Document>
             </div>
-          }
-          className="space-y-4"
-        >
-          {Array.from({ length: numPages }, (_, index) => (
-            <Page
-              key={`resume-page-${index + 1}`}
-              pageNumber={index + 1}
-              width={Math.floor(containerWidth)}
-              renderAnnotationLayer={false}
-              renderTextLayer={false}
-              className="mx-auto overflow-hidden rounded-xl bg-white shadow-lg"
-            />
-          ))}
-        </Document>
+          ) : null}
+        </div>
       ) : null}
     </div>
   );

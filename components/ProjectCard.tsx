@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 
 type ProjectCardProps = {
@@ -6,19 +6,20 @@ type ProjectCardProps = {
   description: string;
   tags: string[];
   href: string;
-  image: string;
+  image: StaticImageData;
 };
 
 export default function ProjectCard({ title, description, tags, href, image }: ProjectCardProps) {
   return (
-    <article className="group relative overflow-hidden rounded-[2.5rem] border border-slate-100 dark:border-white/10 bg-white dark:bg-slate-900/60 backdrop-blur-sm shadow-lg shadow-slate-200/50 dark:shadow-black/30 transition-all duration-500 hover:-translate-y-3 dark:hover:border-cyan-400/30 hover:shadow-2xl hover:shadow-indigo-500/20 dark:hover:shadow-cyan-500/10 active:scale-95">
+    <article className="group relative overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white shadow-lg shadow-slate-200/40 transition-all duration-500 hover:-translate-y-3 hover:shadow-xl hover:shadow-indigo-500/15 active:scale-95 dark:border-white/10 dark:bg-slate-900/95 dark:shadow-black/25 dark:hover:border-cyan-400/30 dark:hover:shadow-cyan-500/10">
       <div className="relative h-64 w-full overflow-hidden">
         <Image
           src={image}
           alt={title}
           fill
+          placeholder="blur"
           className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
-          sizes="(min-width: 768px) 33vw, 100vw"
+          sizes="(max-width: 767px) calc(100vw - 3rem), (max-width: 1023px) 45vw, (max-width: 1280px) 30vw, 380px"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 dark:from-slate-950/80 via-slate-900/20 dark:via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>

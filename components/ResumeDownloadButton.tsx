@@ -27,7 +27,7 @@ export default function ResumeDownloadButton() {
       const link = document.createElement("a");
 
       link.href = fileUrl;
-      link.download = "Resume_Raffiul_Islam.pdf";
+      link.download = "Resume-Raffiul Islam.pdf";
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -49,9 +49,10 @@ export default function ResumeDownloadButton() {
         type="button"
         onClick={downloadResume}
         disabled={downloading}
-        className="rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-indigo-700 disabled:cursor-wait disabled:opacity-70"
+        aria-busy={downloading}
+        className="cursor-pointer rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-indigo-700 disabled:opacity-70"
       >
-        {downloading ? "Preparing PDF…" : "Download PDF"}
+        Download PDF
       </button>
       {error ? <p className="mt-2 text-sm text-red-600">{error}</p> : null}
     </div>

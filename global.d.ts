@@ -1,8 +1,8 @@
 declare module "../components/SkillBadge" {
-  import React from "react";
+  import type { ReactElement } from "react";
   export interface SkillBadgeProps {
     label: string;
   }
-  const SkillBadge: (props: SkillBadgeProps) => JSX.Element;
+  const SkillBadge: (props: SkillBadgeProps) => ReactElement;
   export default SkillBadge;
 }

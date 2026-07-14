@@ -5,7 +5,7 @@ import { projects } from "../data/projects";
 
 export default function Projects() {
   return (
-    <main className="relative mx-auto max-w-7xl px-6 pt-24 pb-20 sm:px-8 lg:px-10">
+    <main id="main-content" tabIndex={-1} className="relative mx-auto max-w-7xl px-6 pt-24 pb-20 sm:px-8 lg:px-10">
       <Head>
         <title>Projects | Md Raffiul Islam</title>
         <meta
