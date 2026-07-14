@@ -54,6 +54,10 @@ html::-webkit-scrollbar-thumb {
     overflow: visible !important;
     display: block !important;
   }
+
+  .app-scroll {
+    padding-top: 0 !important;
+  }
 }
 
 body {

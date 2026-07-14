@@ -45,7 +45,7 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header className="site-header sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 shadow-[0_8px_30px_-24px_rgba(15,23,42,0.4)] transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/95 dark:shadow-black/30">
+    <header className="site-header fixed inset-x-0 top-0 z-50 border-b border-slate-200/80 bg-white/95 shadow-[0_8px_30px_-24px_rgba(15,23,42,0.4)] transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/95 dark:shadow-black/30">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex min-h-20 w-full items-center justify-between">
           <div className="flex flex-1 justify-start">

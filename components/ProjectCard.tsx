@@ -34,8 +34,13 @@ export default function ProjectCard({ title, description, tags, href, image }: P
           ))}
         </div>
         <div className="pt-2">
-          <Link href={href} className="inline-flex min-h-[3rem] w-full items-center justify-center rounded-xl bg-indigo-600 dark:bg-gradient-to-r dark:from-cyan-500 dark:to-indigo-500 px-6 py-2 text-sm font-bold text-white transition-all hover:bg-indigo-700 dark:hover:brightness-110 hover:scale-[1.02] shadow-md shadow-indigo-100 dark:shadow-cyan-500/20 border-2 border-indigo-400 dark:border-transparent">
-            View Details
+          <Link
+            href={href}
+            className="inline-flex min-h-12 w-full cursor-pointer overflow-hidden rounded-xl bg-white p-px shadow-md shadow-indigo-100 transition-transform hover:scale-[1.02] focus-visible:outline-indigo-400 dark:bg-slate-950 dark:shadow-black/25 dark:focus-visible:outline-indigo-300"
+          >
+            <span className="inline-flex min-h-11.5 w-full items-center justify-center rounded-[11px] bg-linear-to-r from-cyan-500 to-indigo-500 px-6 py-2 text-sm font-bold text-white transition-[filter] hover:brightness-105">
+              View Details
+            </span>
           </Link>
         </div>
       </div>

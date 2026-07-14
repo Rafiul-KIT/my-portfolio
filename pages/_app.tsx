@@ -24,7 +24,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         Skip to main content
       </a>
       <Navbar />
-      <div className="app-scroll flex-1 overflow-x-hidden">
+      <div className="app-scroll flex-1 overflow-x-hidden pt-20">
         <Component {...pageProps} />
         <Footer />
       </div>
