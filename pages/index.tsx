@@ -180,8 +180,8 @@ export default function Home() {
               About me
             </p>
             <h2 id="about-heading" className="mt-5 text-center text-4xl font-black leading-tight text-slate-900 dark:text-white sm:text-5xl lg:text-left">
-              Engineering fundamentals first.{" "}
-              <span className="gradient-text">AI-assisted speed second</span>
+              Turning complex workflows into{" "}
+              <span className="gradient-text">secure, scalable software</span>
             </h2>
             <div className="mt-8 space-y-5 text-lg leading-relaxed text-slate-600 dark:text-slate-400">
               <p className="text-center lg:text-left">
@@ -191,10 +191,10 @@ export default function Home() {
                 enterprise integrations.
               </p>
               <p className="text-center lg:text-left">
-                I use Claude, Gemini, ChatGPT, and OpenCode to accelerate research, implementation,
-                debugging, tests, and documentation. Every result is still reviewed and validated
-                for correctness, security, and maintainability—the tools increase throughput, while
-                engineering judgment remains responsible for the outcome.
+                I use AI-assisted development workflows to accelerate research, implementation,
+                debugging, testing, and documentation. Every output is carefully reviewed and
+                validated for correctness, security, and maintainability, ensuring that sound
+                technical judgment remains responsible for the final result.
               </p>
             </div>
 
