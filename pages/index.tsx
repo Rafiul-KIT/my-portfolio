@@ -149,9 +149,13 @@ export default function Home() {
           </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
           {selectedProjects.map((project, index) => (
-            <Reveal key={project.slug} className="h-full" delay={index * 100}>
+            <Reveal
+              key={project.slug}
+              className={`h-full ${index === 3 ? "xl:hidden" : ""}`}
+              delay={index * 100}
+            >
               <ProjectCard
                 title={project.title}
                 description={project.description}
