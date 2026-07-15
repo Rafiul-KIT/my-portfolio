@@ -4,9 +4,9 @@ import Link from "next/link";
 import ProjectCard from "../components/ProjectCard";
 import Reveal from "../components/Reveal";
 import { projects } from "../data/projects";
-import profileImage from "../public/images/profile-raffiul.webp";
+import profileImage from "../public/images/portfolio-photo.webp";
 
-const selectedProjectSlugs = ["snsop", "mims", "itlms"];
+const selectedProjectSlugs = ["snsop", "mims", "tms", "itlms"];
 const selectedProjects = selectedProjectSlugs
   .map((slug) => projects.find((project) => project.slug === slug))
   .filter((project): project is (typeof projects)[number] => Boolean(project));
@@ -46,7 +46,7 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-cyan-50/70 via-transparent to-indigo-100/30 dark:from-cyan-500/10 dark:to-indigo-500/5" />
 
         <div className="relative grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
-          <div className="text-center lg:text-left">
+          <div className="order-2 text-center lg:order-1 lg:text-left">
             <div className="inline-flex max-w-full items-center justify-center gap-2 rounded-full border border-cyan-100 bg-cyan-50 px-4 py-2 text-center text-[10px] font-bold uppercase leading-relaxed tracking-[0.16em] text-cyan-700 shadow-sm shadow-cyan-100/60 dark:border-cyan-400/20 dark:bg-cyan-400/10 dark:text-cyan-300 dark:shadow-cyan-500/10 sm:tracking-[0.25em]">
               <span aria-hidden="true" className="h-2 w-2 rounded-full bg-emerald-500 dark:bg-emerald-400" />
               Software Engineer at Karooth IT (BD) Limited
@@ -84,7 +84,7 @@ export default function Home() {
             </div>
           </div>
 
-          <aside className="mx-auto w-full max-w-md rounded-[2rem] border border-white/80 bg-white/75 p-6 shadow-2xl shadow-slate-200/60 backdrop-blur-md dark:border-white/10 dark:bg-slate-900/70 dark:shadow-black/30 sm:p-8">
+          <aside className="order-1 mx-auto w-full max-w-md rounded-[2rem] border border-white/80 bg-white/75 p-6 shadow-2xl shadow-slate-200/60 backdrop-blur-md dark:border-white/10 dark:bg-slate-900/70 dark:shadow-black/30 sm:p-8 lg:order-2">
             <div className="flex flex-col items-center text-center">
               <div className="relative">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-300 to-indigo-400 opacity-35 blur-2xl dark:from-cyan-400 dark:to-indigo-500" />
@@ -95,7 +95,7 @@ export default function Home() {
                     sizes="(max-width: 639px) 144px, 176px"
                     placeholder="blur"
                     loading="eager"
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover object-top"
                   />
                 </div>
               </div>
@@ -149,7 +149,7 @@ export default function Home() {
           </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
           {selectedProjects.map((project, index) => (
             <Reveal key={project.slug} className="h-full" delay={index * 100}>
               <ProjectCard
