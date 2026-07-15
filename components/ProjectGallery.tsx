@@ -103,7 +103,7 @@ export default function ProjectGallery({ images, projectTitle }: ProjectGalleryP
       aria-roledescription="carousel"
       onKeyDown={handleKeyDown}
       tabIndex={0}
-      className="mx-auto mb-20 max-w-5xl rounded-[3rem] border border-slate-100 bg-white/95 p-4 shadow-xl shadow-slate-200/40 dark:border-white/10 dark:bg-slate-900/95 dark:shadow-black/30 sm:p-6"
+      className="mx-auto mb-20 max-w-5xl rounded-[3rem] border border-slate-200 bg-linear-to-br from-sky-50 via-cyan-50/70 to-indigo-50/80 p-4 shadow-xl shadow-slate-300/50 dark:border-white/10 dark:bg-none dark:bg-slate-900/95 dark:shadow-black/30 sm:p-6"
     >
       <div className="mb-5 flex flex-col items-stretch justify-between gap-4 px-2 sm:flex-row sm:items-center">
         <div className="w-full text-left sm:w-auto">

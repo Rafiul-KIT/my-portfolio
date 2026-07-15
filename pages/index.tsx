@@ -84,7 +84,7 @@ export default function Home() {
             </div>
           </div>
 
-          <aside className="order-1 mx-auto w-full max-w-md rounded-[2rem] border border-white/80 bg-white/75 p-6 shadow-2xl shadow-slate-200/60 backdrop-blur-md dark:border-white/10 dark:bg-slate-900/70 dark:shadow-black/30 sm:p-8 lg:order-2">
+          <aside className="order-1 mx-auto w-full max-w-md rounded-[2rem] border border-slate-200 bg-linear-to-br from-sky-50 via-cyan-50/70 to-indigo-50/80 p-6 shadow-2xl shadow-slate-300/50 backdrop-blur-md dark:border-white/10 dark:bg-none dark:bg-slate-900/70 dark:shadow-black/30 sm:p-8 lg:order-2">
             <div className="flex flex-col items-center text-center">
               <div className="relative">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-300 to-indigo-400 opacity-35 blur-2xl dark:from-cyan-400 dark:to-indigo-500" />
@@ -217,7 +217,7 @@ export default function Home() {
             </p>
             <div className="mt-7 space-y-4">
               {deliveryStrengths.map((strength, index) => (
-                <div key={strength.title} className="rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-sm shadow-slate-200/30 dark:border-white/10 dark:bg-white/5 dark:shadow-black/20">
+                <div key={strength.title} className="rounded-2xl border border-slate-200 bg-linear-to-br from-sky-50 via-cyan-50/70 to-indigo-50/80 p-5 shadow-md shadow-slate-300/50 dark:border-white/10 dark:bg-none dark:bg-white/5 dark:shadow-black/20">
                   <div className="flex items-start gap-4">
                     <span aria-hidden="true" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-cyan-50 text-sm font-black text-cyan-700 dark:bg-cyan-400/10 dark:text-cyan-300">
                       {String(index + 1).padStart(2, "0")}

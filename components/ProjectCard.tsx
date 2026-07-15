@@ -11,7 +11,7 @@ type ProjectCardProps = {
 
 export default function ProjectCard({ title, description, tags, href, image }: ProjectCardProps) {
   return (
-    <article className="group relative overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white shadow-lg shadow-slate-200/40 transition-all duration-500 hover:-translate-y-3 hover:shadow-xl hover:shadow-indigo-500/15 active:scale-95 dark:border-white/10 dark:bg-slate-900/95 dark:shadow-black/25 dark:hover:border-cyan-400/30 dark:hover:shadow-cyan-500/10">
+    <article className="group relative overflow-hidden rounded-[2.5rem] border border-slate-200 bg-linear-to-br from-sky-50 via-cyan-50/70 to-indigo-50/80 shadow-xl shadow-slate-300/50 transition-all duration-500 hover:-translate-y-3 hover:border-cyan-300 hover:shadow-2xl hover:shadow-indigo-500/20 active:scale-95 dark:border-white/10 dark:bg-none dark:bg-slate-900/95 dark:shadow-black/25 dark:hover:border-cyan-400/30 dark:hover:shadow-cyan-500/10">
       <div className="relative h-64 w-full overflow-hidden">
         <Image
           src={image}

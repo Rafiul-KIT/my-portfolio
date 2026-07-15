@@ -62,7 +62,7 @@ export default function ProjectDetail({ project }: Props) {
           <Reveal>
             <section
               aria-labelledby="case-study-overview"
-              className="overflow-hidden rounded-[3rem] border border-cyan-100 bg-white p-8 shadow-xl shadow-cyan-100/40 dark:border-cyan-400/20 dark:bg-slate-900/60 dark:shadow-cyan-500/10 sm:p-12"
+              className="overflow-hidden rounded-[3rem] border border-cyan-100 bg-linear-to-br from-sky-50 via-cyan-50/70 to-indigo-50/80 p-8 shadow-xl shadow-cyan-100/40 dark:border-cyan-400/20 dark:bg-none dark:bg-slate-900/60 dark:shadow-cyan-500/10 sm:p-12"
             >
               <p className="text-xs font-bold uppercase tracking-[0.3em] text-cyan-600 dark:text-cyan-300">
                 Case study
@@ -83,7 +83,7 @@ export default function ProjectDetail({ project }: Props) {
             <Reveal className="h-full">
               <section
                 aria-labelledby="case-study-challenge"
-                className="h-full rounded-[3rem] border-2 border-amber-100 bg-white p-8 shadow-xl shadow-amber-100/30 dark:border-amber-400/20 dark:bg-slate-900/60 dark:shadow-amber-500/10 sm:p-10"
+                className="h-full rounded-[3rem] border-2 border-amber-100 bg-linear-to-br from-amber-50 via-orange-50/60 to-sky-50/70 p-8 shadow-xl shadow-amber-100/30 dark:border-amber-400/20 dark:bg-none dark:bg-slate-900/60 dark:shadow-amber-500/10 sm:p-10"
               >
                 <h2 id="case-study-challenge" className="text-2xl font-black text-amber-700 dark:text-amber-300">
                   The challenge
@@ -102,7 +102,7 @@ export default function ProjectDetail({ project }: Props) {
             <Reveal className="h-full" delay={100}>
               <section
                 aria-labelledby="case-study-solution"
-                className="flex h-full flex-col justify-center rounded-[3rem] border-2 border-cyan-100 bg-white p-8 shadow-xl shadow-cyan-100/30 dark:border-cyan-400/20 dark:bg-slate-900/60 dark:shadow-cyan-500/10 sm:p-10"
+                className="flex h-full flex-col justify-center rounded-[3rem] border-2 border-cyan-100 bg-linear-to-br from-cyan-50 via-sky-50/70 to-indigo-50/70 p-8 shadow-xl shadow-cyan-100/30 dark:border-cyan-400/20 dark:bg-none dark:bg-slate-900/60 dark:shadow-cyan-500/10 sm:p-10"
               >
                 <p className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-600 dark:text-cyan-300">
                   Modernization approach
@@ -136,7 +136,7 @@ export default function ProjectDetail({ project }: Props) {
             <div className="mt-10 grid gap-6 md:grid-cols-2">
               {project.caseStudy.domains.map((domain, index) => (
                 <Reveal key={domain.title} className="h-full" delay={index * 80}>
-                  <article className="h-full rounded-[2.5rem] border border-slate-200 bg-white p-8 shadow-lg shadow-slate-200/40 dark:border-white/10 dark:bg-slate-900/60 dark:shadow-black/20">
+                  <article className="h-full rounded-[2.5rem] border border-slate-200 bg-linear-to-br from-sky-50 via-cyan-50/70 to-indigo-50/70 p-8 shadow-lg shadow-slate-200/40 dark:border-white/10 dark:bg-none dark:bg-slate-900/60 dark:shadow-black/20">
                     <h3 className="text-xl font-black text-slate-900 dark:text-white">{domain.title}</h3>
                     <ul className="mt-6 space-y-3 text-left text-sm text-slate-600 dark:text-slate-400">
                       {domain.capabilities.map((capability) => (
@@ -177,7 +177,7 @@ export default function ProjectDetail({ project }: Props) {
 
           <div className="content-auto grid gap-8 lg:grid-cols-2">
             <Reveal className="h-full">
-              <section aria-labelledby="business-impact" className="h-full rounded-[3rem] border-2 border-emerald-100 bg-white p-8 dark:border-emerald-400/20 dark:bg-slate-900/60 sm:p-10">
+              <section aria-labelledby="business-impact" className="h-full rounded-[3rem] border-2 border-emerald-100 bg-linear-to-br from-emerald-50 via-cyan-50/60 to-sky-50/70 p-8 dark:border-emerald-400/20 dark:bg-none dark:bg-slate-900/60 sm:p-10">
                 <h2 id="business-impact" className="text-2xl font-black text-emerald-700 dark:text-emerald-300">
                   Business impact
                 </h2>
@@ -193,7 +193,7 @@ export default function ProjectDetail({ project }: Props) {
             </Reveal>
 
             <Reveal className="h-full" delay={100}>
-              <section aria-labelledby="my-contributions" className="h-full rounded-[3rem] border-2 border-violet-100 bg-white p-8 dark:border-violet-400/20 dark:bg-slate-900/60 sm:p-10">
+              <section aria-labelledby="my-contributions" className="h-full rounded-[3rem] border-2 border-violet-100 bg-linear-to-br from-violet-50 via-indigo-50/60 to-sky-50/70 p-8 dark:border-violet-400/20 dark:bg-none dark:bg-slate-900/60 sm:p-10">
                 <h2 id="my-contributions" className="text-2xl font-black text-violet-700 dark:text-violet-300">
                   My contributions
                 </h2>
@@ -213,7 +213,7 @@ export default function ProjectDetail({ project }: Props) {
 
       <section className="content-auto mx-auto grid max-w-5xl gap-12 md:grid-cols-2">
         <Reveal className="h-full">
-          <div className="flex h-[32rem] flex-col rounded-[3rem] border-2 border-indigo-100 bg-white p-10 text-center shadow-xl shadow-indigo-100/40 dark:border-indigo-400/20 dark:bg-slate-900/60 dark:shadow-indigo-500/10">
+          <div className="flex h-[32rem] flex-col rounded-[3rem] border-2 border-indigo-100 bg-linear-to-br from-indigo-50 via-sky-50/70 to-cyan-50/70 p-10 text-center shadow-xl shadow-indigo-100/40 dark:border-indigo-400/20 dark:bg-none dark:bg-slate-900/60 dark:shadow-indigo-500/10">
             <h2 className="mb-8 inline-block rounded-2xl bg-indigo-50 px-6 py-2 text-2xl font-black text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300">
               Project highlights
             </h2>
@@ -231,7 +231,7 @@ export default function ProjectDetail({ project }: Props) {
         </Reveal>
 
         <Reveal className="h-full" delay={120}>
-          <div className="flex h-[32rem] flex-col rounded-[3rem] border-2 border-emerald-100 bg-white p-10 text-center shadow-xl shadow-emerald-100/40 dark:border-emerald-400/20 dark:bg-slate-900/60 dark:shadow-emerald-500/10">
+          <div className="flex h-[32rem] flex-col rounded-[3rem] border-2 border-emerald-100 bg-linear-to-br from-emerald-50 via-cyan-50/70 to-sky-50/70 p-10 text-center shadow-xl shadow-emerald-100/40 dark:border-emerald-400/20 dark:bg-none dark:bg-slate-900/60 dark:shadow-emerald-500/10">
             <h2 className="mb-8 inline-block rounded-2xl bg-emerald-50 px-6 py-2 text-2xl font-black text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300">
               Core capabilities
             </h2>

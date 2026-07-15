@@ -43,6 +43,127 @@ const contacts: Array<{
 
 const CONTACT_EMAIL = "rafiulislam1020@gmail.com";
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+const REASON_OPTIONS = [
+  "Professional opportunity",
+  "Freelance project",
+  "Technical collaboration",
+  "General inquiry",
+] as const;
+
+type ReasonOption = (typeof REASON_OPTIONS)[number];
+
+function ReasonSelect({ value, onChange }: { value: ReasonOption; onChange: (value: ReasonOption) => void }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(() => REASON_OPTIONS.indexOf(value));
+
+  useEffect(() => {
+    const handleOutsideClick = (event: PointerEvent) => {
+      if (!containerRef.current?.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handleOutsideClick);
+    return () => document.removeEventListener("pointerdown", handleOutsideClick);
+  }, []);
+
+  const selectOption = (option: ReasonOption) => {
+    onChange(option);
+    setActiveIndex(REASON_OPTIONS.indexOf(option));
+    setIsOpen(false);
+    buttonRef.current?.focus();
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === "Escape") {
+      setIsOpen(false);
+      return;
+    }
+
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      event.preventDefault();
+      const direction = event.key === "ArrowDown" ? 1 : -1;
+      setIsOpen(true);
+      setActiveIndex((current) => (current + direction + REASON_OPTIONS.length) % REASON_OPTIONS.length);
+      return;
+    }
+
+    if ((event.key === "Enter" || event.key === " ") && isOpen) {
+      event.preventDefault();
+      selectOption(REASON_OPTIONS[activeIndex]);
+    }
+  };
+
+  return (
+    <div ref={containerRef} className="relative">
+      <input type="hidden" name="reason" value={value} />
+      <button
+        ref={buttonRef}
+        id="reason"
+        type="button"
+        role="combobox"
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        aria-controls="reason-options"
+        aria-activedescendant={isOpen ? `reason-option-${activeIndex}` : undefined}
+        onClick={() => {
+          setActiveIndex(REASON_OPTIONS.indexOf(value));
+          setIsOpen((open) => !open);
+        }}
+        onKeyDown={handleKeyDown}
+        className="flex w-full cursor-pointer items-center justify-between gap-3 rounded-2xl border border-slate-300 bg-white px-6 py-4 text-left text-slate-900 shadow-sm shadow-slate-300/40 outline-none transition hover:border-slate-400 focus:border-cyan-600 focus:ring-4 focus:ring-cyan-500/15 dark:border-white/10 dark:bg-slate-800 dark:text-white dark:shadow-none dark:hover:border-white/20 dark:focus:border-cyan-400 dark:focus:ring-cyan-400/10"
+      >
+        <span className="min-w-0 truncate">{value}</span>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 20 20"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className={`h-4 w-4 shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`}
+        >
+          <path d="m5 7.5 5 5 5-5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
+      {isOpen ? (
+        <div
+          id="reason-options"
+          role="listbox"
+          aria-label="Reason for contact"
+          className="absolute inset-x-0 top-full z-30 mt-2 overflow-hidden rounded-2xl border border-slate-200 bg-sky-50 p-2 shadow-2xl shadow-slate-400/30 dark:border-white/10 dark:bg-slate-900 dark:shadow-black/50"
+        >
+          {REASON_OPTIONS.map((option, index) => {
+            const isActive = index === activeIndex;
+            const isSelected = option === value;
+
+            return (
+              <button
+                key={option}
+                id={`reason-option-${index}`}
+                type="button"
+                role="option"
+                aria-selected={isSelected}
+                onPointerEnter={() => setActiveIndex(index)}
+                onClick={() => selectOption(option)}
+                className={`flex w-full cursor-pointer items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-semibold transition ${
+                  isActive
+                    ? "bg-cyan-100 text-cyan-900 dark:bg-cyan-400/15 dark:text-cyan-200"
+                    : "text-slate-700 hover:bg-white dark:text-slate-300 dark:hover:bg-white/5"
+                }`}
+              >
+                <span>{option}</span>
+                {isSelected ? <span aria-hidden="true" className="text-cyan-600 dark:text-cyan-300">✓</span> : null}
+              </button>
+            );
+          })}
+        </div>
+      ) : null}
+    </div>
+  );
+}
 
 function ContactIcon({ name }: { name: ContactIconName }) {
   if (name === "email") {
@@ -83,6 +204,7 @@ export default function Contact() {
   const [submitNotice, setSubmitNotice] = useState("");
   const [submissionState, setSubmissionState] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [turnstileToken, setTurnstileToken] = useState("");
+  const [reason, setReason] = useState<ReasonOption>(REASON_OPTIONS[0]);
 
   useEffect(() => {
     return () => {
@@ -167,6 +289,7 @@ export default function Contact() {
       setSubmissionState("success");
       setSubmitNotice(payload.message || "Thanks! Your message has been sent successfully.");
       formElement.reset();
+      setReason(REASON_OPTIONS[0]);
     } catch (error) {
       setSubmissionState("error");
       setSubmitNotice(
@@ -242,7 +365,7 @@ export default function Contact() {
                   href={contact.href}
                   target={contact.external ? "_blank" : undefined}
                   rel={contact.external ? "noreferrer" : undefined}
-                  className="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white/80 p-4 transition hover:-translate-y-0.5 hover:border-cyan-300 hover:shadow-md dark:border-white/10 dark:bg-white/5 dark:hover:border-cyan-400/40"
+                  className="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-linear-to-br from-sky-50 via-cyan-50/70 to-indigo-50/80 p-4 shadow-sm shadow-slate-200/60 transition hover:-translate-y-0.5 hover:border-cyan-300 hover:shadow-md dark:border-white/10 dark:bg-none dark:bg-white/5 dark:shadow-black/20 dark:hover:border-cyan-400/40"
                 >
                   <span aria-hidden="true" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-cyan-50 text-xs font-black text-cyan-700 transition group-hover:bg-cyan-100 dark:bg-cyan-400/10 dark:text-cyan-300 dark:group-hover:bg-cyan-400/20">
                     <ContactIcon name={contact.icon} />
@@ -273,10 +396,10 @@ export default function Contact() {
         </Reveal>
 
         <Reveal delay={120}>
-          <form onSubmit={handleSubmit} className="space-y-6 rounded-[2.5rem] border border-slate-100 bg-slate-50/80 p-7 shadow-xl shadow-slate-200/40 transition-all hover:-translate-y-0.5 dark:border-white/10 dark:bg-slate-900/60 dark:shadow-black/30 sm:p-10">
+          <form onSubmit={handleSubmit} className="space-y-6 rounded-[2.5rem] border border-slate-200 bg-linear-to-br from-sky-50 via-cyan-50/70 to-indigo-50/80 p-7 shadow-xl shadow-slate-300/50 transition-all hover:-translate-y-0.5 dark:border-white/10 dark:bg-none dark:bg-slate-900/60 dark:shadow-black/30 sm:p-10">
             <div>
               <p className="text-left text-xs font-bold uppercase tracking-[0.25em] text-indigo-600 dark:text-indigo-300">Send an inquiry</p>
-              <h2 className="mt-3 text-left text-3xl font-black text-slate-900 dark:text-white">Tell me what you&apos;re working on</h2>
+              <h2 className="mt-3 text-left text-3xl font-black text-slate-900 dark:text-white">Let&apos;s discuss how I can help</h2>
               <p className="mt-3 text-left text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                 Include the goal, current challenge, and how you think I can contribute.
               </p>
@@ -299,34 +422,29 @@ export default function Contact() {
 
             <div className="grid gap-6 sm:grid-cols-2">
               <div className="space-y-2">
-                <label className="ml-2 text-sm font-bold text-slate-500 dark:text-slate-400" htmlFor="name">Name</label>
-                <input id="name" type="text" name="name" required autoComplete="name" maxLength={80} className="w-full rounded-2xl border border-slate-100 bg-white px-6 py-4 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/10 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-cyan-400 dark:focus:ring-cyan-400/10" placeholder="Your name" />
+                <label className="ml-2 text-sm font-bold text-slate-700 dark:text-slate-400" htmlFor="name">Name</label>
+                <input id="name" type="text" name="name" required autoComplete="name" maxLength={80} className="w-full rounded-2xl border border-slate-300 bg-white px-6 py-4 text-slate-900 shadow-sm shadow-slate-300/40 outline-none transition placeholder:text-slate-500 hover:border-slate-400 focus:border-cyan-600 focus:ring-4 focus:ring-cyan-500/15 dark:border-white/10 dark:bg-white/5 dark:text-white dark:shadow-none dark:placeholder:text-slate-500 dark:hover:border-white/20 dark:focus:border-cyan-400 dark:focus:ring-cyan-400/10" placeholder="Your name" />
               </div>
               <div className="space-y-2">
-                <label className="ml-2 text-sm font-bold text-slate-500 dark:text-slate-400" htmlFor="email">Email</label>
-                <input id="email" type="email" name="email" required autoComplete="email" maxLength={120} className="w-full rounded-2xl border border-slate-100 bg-white px-6 py-4 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/10 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-cyan-400 dark:focus:ring-cyan-400/10" placeholder="you@example.com" />
+                <label className="ml-2 text-sm font-bold text-slate-700 dark:text-slate-400" htmlFor="email">Email</label>
+                <input id="email" type="email" name="email" required autoComplete="email" maxLength={120} className="w-full rounded-2xl border border-slate-300 bg-white px-6 py-4 text-slate-900 shadow-sm shadow-slate-300/40 outline-none transition placeholder:text-slate-500 hover:border-slate-400 focus:border-cyan-600 focus:ring-4 focus:ring-cyan-500/15 dark:border-white/10 dark:bg-white/5 dark:text-white dark:shadow-none dark:placeholder:text-slate-500 dark:hover:border-white/20 dark:focus:border-cyan-400 dark:focus:ring-cyan-400/10" placeholder="you@example.com" />
               </div>
             </div>
 
             <div className="grid gap-6 sm:grid-cols-2">
               <div className="space-y-2">
-                <label className="ml-2 text-sm font-bold text-slate-500 dark:text-slate-400" htmlFor="reason">Reason for contact</label>
-                <select id="reason" name="reason" defaultValue="Professional opportunity" className="w-full cursor-pointer rounded-2xl border border-slate-100 bg-white px-6 py-4 text-slate-900 outline-none transition focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/10 dark:border-white/10 dark:bg-slate-800 dark:text-white dark:focus:border-cyan-400 dark:focus:ring-cyan-400/10">
-                  <option>Professional opportunity</option>
-                  <option>Freelance project</option>
-                  <option>Technical collaboration</option>
-                  <option>General inquiry</option>
-                </select>
+                <label className="ml-2 text-sm font-bold text-slate-700 dark:text-slate-400" htmlFor="reason">Reason for contact</label>
+                <ReasonSelect value={reason} onChange={setReason} />
               </div>
               <div className="space-y-2">
-                <label className="ml-2 text-sm font-bold text-slate-500 dark:text-slate-400" htmlFor="subject">Subject</label>
-                <input id="subject" type="text" name="subject" maxLength={140} className="w-full rounded-2xl border border-slate-100 bg-white px-6 py-4 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/10 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-cyan-400 dark:focus:ring-cyan-400/10" placeholder="A short summary" />
+                <label className="ml-2 text-sm font-bold text-slate-700 dark:text-slate-400" htmlFor="subject">Subject</label>
+                <input id="subject" type="text" name="subject" maxLength={140} className="w-full rounded-2xl border border-slate-300 bg-white px-6 py-4 text-slate-900 shadow-sm shadow-slate-300/40 outline-none transition placeholder:text-slate-500 hover:border-slate-400 focus:border-cyan-600 focus:ring-4 focus:ring-cyan-500/15 dark:border-white/10 dark:bg-white/5 dark:text-white dark:shadow-none dark:placeholder:text-slate-500 dark:hover:border-white/20 dark:focus:border-cyan-400 dark:focus:ring-cyan-400/10" placeholder="A short summary" />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="ml-2 text-sm font-bold text-slate-500 dark:text-slate-400" htmlFor="message">Message</label>
-              <textarea id="message" name="message" rows={6} required minLength={10} maxLength={2000} className="w-full resize-y rounded-2xl border border-slate-100 bg-white px-6 py-4 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/10 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-cyan-400 dark:focus:ring-cyan-400/10" placeholder="Tell me about the opportunity or project" />
+              <label className="ml-2 text-sm font-bold text-slate-700 dark:text-slate-400" htmlFor="message">Message</label>
+              <textarea id="message" name="message" rows={6} required minLength={10} maxLength={2000} className="w-full resize-y rounded-2xl border border-slate-300 bg-white px-6 py-4 text-slate-900 shadow-sm shadow-slate-300/40 outline-none transition placeholder:text-slate-500 hover:border-slate-400 focus:border-cyan-600 focus:ring-4 focus:ring-cyan-500/15 dark:border-white/10 dark:bg-white/5 dark:text-white dark:shadow-none dark:placeholder:text-slate-500 dark:hover:border-white/20 dark:focus:border-cyan-400 dark:focus:ring-cyan-400/10" placeholder="Tell me about the opportunity or project" />
             </div>
 
             <div className="rounded-2xl border border-slate-200 bg-white p-3 dark:border-white/10 dark:bg-slate-950/60">
